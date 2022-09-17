@@ -3,10 +3,14 @@ from typing import Tuple
 
 from telebot import types
 
+from src.button.button_function import ButtonFunction
+
 
 class Button(ABC):
-    def __init__(self, key, callback):
+    def __init__(self, key, callback, inline=False, button_function: ButtonFunction = ButtonFunction.default):
         # self.text_provider = text_provider
+        self.inline = inline
+        self.button_function = button_function
         self.callback = callback
         self.key = key
         self.native_button = None
@@ -31,22 +35,23 @@ class Button(ABC):
         # return self.text_provider.get_text(self.key)
 
 
-class TgReplyButton(Button):
+class TgButton(Button):
     def get_hash(self):
-        return self._get_text()
+        if self.inline:
+            return f"Inline:{self._get_text()}"
+        else:
+            return self._get_text()
 
     def _create(self):
         text = self._get_text()
-        self.native_button = types.KeyboardButton(text)
+        req_phone = self.button_function == ButtonFunction.request_phone
+        req_location = self.button_function == ButtonFunction.request_location
 
-
-class TgInlineButton(Button):
-    def get_hash(self):
-        return f"Inline:{self._get_text()}"
-
-    def _create(self):
-        text = self._get_text()
-        self.native_button = types.InlineKeyboardButton(text, callback_data=self.get_hash())
+        if self.inline:
+            self.native_button = types.InlineKeyboardButton(text, callback_data=self.get_hash(),
+                                                            request_contact=req_phone, request_location=req_location)
+        else:
+            self.native_button = types.KeyboardButton(text, request_contact=req_phone, request_location=req_location)
 
 
 class VkButton(Button):
