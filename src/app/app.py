@@ -64,7 +64,6 @@ class TgApp(App):
         return user
 
     def callbacks_handle(self, call):
-        # data = call.data[7:]
         data = call.data
         user_id = call.from_user.id
 

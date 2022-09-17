@@ -43,10 +43,10 @@ class Page(ABC):
     def make_render_content(self, user):
         pass
 
-    def check_input(self, user, text):
+    def check_input(self, user, text, only_check_press=False):
         # TODO: Don't trigger the inline buttons this way!
         pressed_button = self.markup.get_pressed_button(text)
         if pressed_button:
             pressed_button.pressed(user)
-        else:
+        elif not only_check_press:
             self._respond_to_input(user, text)

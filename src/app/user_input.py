@@ -5,7 +5,7 @@ class UserInput:
 
     def forward_inline_button(self, user, text):
         page = self.navigator.get_user_page(user)
-        page.check_input(user, text)
+        page.check_input(user, text, True)
         print("Forward button")
 
     def handle_input(self, user, text):
