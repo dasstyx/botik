@@ -1,7 +1,5 @@
 from typing import Sequence
 
-from vk_api.keyboard import VkKeyboard
-
 from src.button.button import VkButton
 from src.keyboard.keyboard_markup import KeyboardMarkup
 

@@ -1,4 +1,5 @@
 from abc import ABC
+from random import randrange
 
 
 class SendMessage(ABC):
@@ -22,9 +23,16 @@ class TgSendMessage(SendMessage):
 
 class VkSendMessage(SendMessage):
 
+    def __init__(self, raw_api):
+        self.raw_api = raw_api
+
     def send(self, user, text):
-        self.bot.messages.send(peer_id=user.id, message=text)
+        uid = user.id
+        self.raw_api.messages.send(user_ids=uid, random_id=randrange(10e10), peer_id=uid,
+                                   message=text)
 
     def send_with_keyboard(self, user, text, keyboard):
+        uid = user.id
         markup = keyboard.get_native_markup()
-        self.bot.messages.send(peer_id=user.id, keyboard=markup.get_keyboard(), message=text)
+        self.raw_api.messages.send(user_ids=uid, random_id=randrange(10e10), peer_id=uid,
+                                   message=text, keyboard=markup.get_keyboard())

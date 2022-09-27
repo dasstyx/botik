@@ -13,7 +13,7 @@ class Button(ABC):
         self.button_function = button_function
         self.callback = callback
         self.key = key
-        self.native_button = None
+        self._native_button = None
         self._create()
 
     @abstractmethod
@@ -21,10 +21,13 @@ class Button(ABC):
         pass
 
     def get_native_button(self):
-        return self.native_button
+        return self._native_button
 
     def get_hash(self):
-        return hash(self)
+        if self.inline:
+            return f"Inline:{self._get_text()}"
+        else:
+            return self._get_text()
 
     def pressed(self, user):
         if self.callback:
@@ -36,11 +39,6 @@ class Button(ABC):
 
 
 class TgButton(Button):
-    def get_hash(self):
-        if self.inline:
-            return f"Inline:{self._get_text()}"
-        else:
-            return self._get_text()
 
     def _create(self):
         text = self._get_text()
@@ -52,16 +50,3 @@ class TgButton(Button):
                                                             request_contact=req_phone, request_location=req_location)
         else:
             self.native_button = types.KeyboardButton(text, request_contact=req_phone, request_location=req_location)
-
-
-class VkButton(Button):
-    def __init__(self, key, callback, text_provider):
-        super().__init__(key, callback, text_provider)
-        self.outputs = None
-
-    def _create(self):
-        text = self._get_text()
-        self.outputs = (text,)
-
-    def get_data(self) -> Tuple[str]:
-        return self.outputs
