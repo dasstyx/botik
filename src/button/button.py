@@ -7,6 +7,7 @@ from src.button.button_function import ButtonFunction
 
 
 class Button(ABC):
+    # TODO: button_function is a bad name! Change it later!
     def __init__(self, key, callback, inline=False, button_function: ButtonFunction = ButtonFunction.default):
         # self.text_provider = text_provider
         self.inline = inline
@@ -14,10 +15,10 @@ class Button(ABC):
         self.callback = callback
         self.key = key
         self._native_button = None
-        self._create()
+        self._create_native()
 
     @abstractmethod
-    def _create(self):
+    def _create_native(self):
         pass
 
     def get_native_button(self):
@@ -29,7 +30,7 @@ class Button(ABC):
         else:
             return self._get_text()
 
-    def pressed(self, user):
+    def press(self, user):
         if self.callback:
             self.callback(user)
 
@@ -40,7 +41,7 @@ class Button(ABC):
 
 class TgButton(Button):
 
-    def _create(self):
+    def _create_native(self):
         text = self._get_text()
         req_phone = self.button_function == ButtonFunction.request_phone
         req_location = self.button_function == ButtonFunction.request_location
