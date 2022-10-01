@@ -12,8 +12,5 @@ class BPage(Page):
         super().__init__(path, markup_factory, data)
         self.model = PageBuilderModel()
 
-    def add_button(self, button):
-        self.buttons.append(button)
-
     async def make_render_content(self, user):
         pass

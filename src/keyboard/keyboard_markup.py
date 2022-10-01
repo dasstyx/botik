@@ -36,13 +36,6 @@ class KeyboardMarkup(ABC):
 
         return button
 
-    def add_button(self, button: ButtonData):
-        button = self.button_factory.create(button)
-        self._markup.add(button)
-
-        button_hash = button.get_hash()
-        self.hash_to_buttons[button_hash] = button
-
     def get_pressed_button(self, button_hash):
         if button_hash in self.hash_to_buttons:
             return self.hash_to_buttons[button_hash]
