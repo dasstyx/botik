@@ -12,6 +12,7 @@ class SendMessage(ABC):
     async def send_with_keyboard(self, user, text, keyboard):
         pass
 
+
 class TgSendMessage(SendMessage):
 
     async def send(self, user, text):
@@ -21,6 +22,7 @@ class TgSendMessage(SendMessage):
         markup = keyboard.get_native_markup()
         self.bot.send_message(user.id, text, reply_markup=markup)
 
+
 class VkSendMessage(SendMessage):
 
     def __init__(self, raw_api):
@@ -28,11 +30,11 @@ class VkSendMessage(SendMessage):
 
     async def send(self, user, text):
         uid = user.id
-        await self.raw_api.messages.send(user_ids=uid, random_id=randrange(10e10), peer_id=uid,
-                                   message=text)
+        await self.raw_api.messages.send(user_id=uid, random_id=randrange(10e10),
+                                         message=text)
 
     async def send_with_keyboard(self, user, text, keyboard):
         uid = user.id
         markup = keyboard.get_native_markup()
-        await self.raw_api.messages.send(user_ids=uid, random_id=randrange(10e10), peer_id=uid,
-                                   message=text, keyboard=markup)
+        await self.raw_api.messages.send(user_id=uid, random_id=randrange(10e10),
+                                         message=text, keyboard=markup)

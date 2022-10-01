@@ -26,10 +26,7 @@ class Button(ABC):
         return self._native_button
 
     def get_hash(self):
-        if self.inline:
-            return f"Inline:{self._get_text()}"
-        else:
-            return self._get_text()
+        return self._get_text()
 
     async def press(self, user):
         if self.callback:
