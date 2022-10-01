@@ -20,53 +20,44 @@ class VkRawMessageHandlers:
         check_inline = lambda m: m.get_payload_json().get("inline", None)
         bot.on.private_message(func=check_inline)(self.callbacks_handle)
 
-    def message_reply(self, message):
-        user = self._get_user_from_message(message)
-        self.user_input.handle_input(user, message.text)
-
-    def start_reply(self, message):
-        user = self._get_user_from_message(message)
+    async def start_reply(self, message):
+        user = await self._get_user_from_message(message)
 
         if self.start_callback:
-            self.start_callback(user)
+            await self.start_callback(user)
 
-    def _get_user_from_message(self, message):
+    async def message_reply(self, message):
+        user = await self._get_user_from_message(message)
+        await self.user_input.handle_input(user, message.text)
+
+    async def _get_user_from_message(self, message):
         user_id = message.from_id
-        return self._get_user_from_id(user_id)
+        return await self._get_user_from_id(user_id)
 
-    def _get_user_from_id(self, user_id):
+    async def _get_user_from_id(self, user_id):
         if self.users.exists(user_id):
             user = self.users.get(user_id)
             print(f"Existing user! id: {user.id}")
         else:
             user = self.users.add(user_id)
-            self.navigator.change_page(user, '/')
+            await self.navigator.change_page(user, '/')
             print(f"New user! id: {user.id}")
         return user
 
-    def callbacks_handle(self, call):
+    async def callbacks_handle(self, call):
         data = call.get_payload_json().get("inline")
 
         user_id = call.from_id
-        user = self._get_user_from_id(user_id)
+        user = await self._get_user_from_id(user_id)
 
-        self.user_input.forward_inline_button(user, data)
+        await self.user_input.forward_inline_button(user, data)
 
-    def start_reply(self, message):
-        user = self._get_user_from_message(message)
-
-        if self.start_callback:
-            self.start_callback(user)
-
-    def message_reply(self, message):
-        user = self._get_user_from_message(message)
-        self.user_input.handle_input(user, message.text)
-
-    def location_reply(self, message):
-        user = self._get_user_from_message(message)
+    async def location_reply(self, message):
+        user = await self._get_user_from_message(message)
         location = message.geo
 
-        user.storage.add_entry("location", location)
+        await user.storage.add_entry("location", location)
+
 
 class VkApp(App):
     def start(self):
@@ -82,6 +73,7 @@ class VkApp(App):
 
     def initialize(self, bot):
         pass
+
     def initialize_with_raw_api(self, raw_api):
         api = VKApi(raw_api)
         self.navigator = Navigation()

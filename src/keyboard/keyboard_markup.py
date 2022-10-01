@@ -9,6 +9,8 @@ from src.button.button_factory import ButtonFactory
 class KeyboardMarkup(ABC):
 
     def __init__(self, button_factory: ButtonFactory, inline, one_time):
+        self.inline = inline
+        self.one_time = one_time
         self.button_factory = button_factory
         self.hash_to_buttons = {}
         self._markup = None

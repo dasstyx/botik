@@ -21,50 +21,50 @@ class TgRawMessageHandlers:
 
         bot.callback_query_handler(func=lambda call: True)(self.callbacks_handle)
 
-    def _get_user_from_message(self, message):
+    async def _get_user_from_message(self, message):
         user_id = message.from_user.id
-        return self._get_user_from_id(user_id)
+        return await self._get_user_from_id(user_id)
 
-    def _get_user_from_id(self, user_id):
+    async def _get_user_from_id(self, user_id):
         if self.users.exists(user_id):
             user = self.users.get(user_id)
             print(f"Existing user! id: {user.id}")
         else:
             user = self.users.add(user_id)
-            self.navigator.change_page(user, '/')
+            await self.navigator.change_page(user, '/')
             print(f"New user! id: {user.id}")
         return user
 
-    def callbacks_handle(self, call):
+    async def callbacks_handle(self, call):
         data = call.data
 
         user_id = call.from_user.id
-        user = self._get_user_from_id(user_id)
+        user = await self._get_user_from_id(user_id)
 
-        self.user_input.forward_inline_button(user, data)
+        await self.user_input.forward_inline_button(user, data)
 
-    def start_reply(self, message):
+    async def start_reply(self, message):
         user = self._get_user_from_message(message)
 
         if self.start_callback:
-            self.start_callback(user)
+            await self.start_callback(user)
 
-    def message_reply(self, message):
-        user = self._get_user_from_message(message)
-        self.user_input.handle_input(user, message.text)
+    async def message_reply(self, message):
+        user = await self._get_user_from_message(message)
+        await self.user_input.handle_input(user, message.text)
 
-    def location_reply(self, message):
-        user = self._get_user_from_message(message)
+    async def location_reply(self, message):
+        user = await self._get_user_from_message(message)
         location = message.location
 
-        user.storage.add_entry("location", location)
+        await user.storage.add_entry("location", location)
 
-    def phone_reply(self, message):
-        user = self._get_user_from_message(message)
+    async def phone_reply(self, message):
+        user = await self._get_user_from_message(message)
         number = message.contact.phone_number
         print(f"Got a number! {number}")
 
-        user.storage.add_entry("phone", number)
+        await user.storage.add_entry("phone", number)
 
 
 class TgApp(App):

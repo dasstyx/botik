@@ -19,21 +19,21 @@ class Navigation:
     def get_user_page(self, user):
         return user.current_page
 
-    def change_page(self, user, path):
-        page = self._render_page(user, path)
+    async def change_page(self, user, path):
+        page = await self._render_page(user, path)
         user.set_page(page)
 
-    def get_back(self, user):
+    async def get_back(self, user):
         page = self.get_user_page(user)
         back_path = page.get_back_path()
-        self.change_page(user, back_path)
+        await self.change_page(user, back_path)
 
     def _make_page(self, page_data):
         return self.page_factory.create(page_data)
 
-    def _render_page(self, user, path):
+    async def _render_page(self, user, path):
         data = self.get_page_data(path)
         page = self._make_page(data)
-        page.make_render_content(user)
+        await page.make_render_content(user)
         return page
 

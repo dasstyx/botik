@@ -31,9 +31,9 @@ class Button(ABC):
         else:
             return self._get_text()
 
-    def press(self, user):
+    async def press(self, user):
         if self.callback:
-            self.callback(user)
+            await self.callback(user)
 
     def _get_text(self):
         return self.key

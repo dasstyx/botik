@@ -24,11 +24,11 @@ class Page(ABC):
     def _initialize(self, markup_factory: KeyboardMarkupFactory):
         self.markup = markup_factory.create(self._data.inline, self._data.one_time)
 
-    def send_message(self, user, message):
-        self.api.msg.send(user, message)
+    async def send_message(self, user, message):
+        await self.api.msg.send(user, message)
 
-    def _send_keyboard_message(self, user, keyboard, text):
-        self.api.msg.send_with_keyboard(user, text, keyboard)
+    async def _send_keyboard_message(self, user, keyboard, text):
+        await self.api.msg.send_with_keyboard(user, text, keyboard)
 
     def get_deps(self):
         return self._data
@@ -36,17 +36,17 @@ class Page(ABC):
     def get_back_path(self):
         return str(Path(self.path).parent.as_posix())
 
-    def _respond_to_input(self, user, text):
+    async def _respond_to_input(self, user, text):
         pass
 
     @abstractmethod
-    def make_render_content(self, user):
+    async def make_render_content(self, user):
         pass
 
-    def check_input(self, user, text, only_check_press=False):
+    async def check_input(self, user, text, only_check_press=False):
         # TODO: Don't trigger the inline buttons this way!
         pressed_button = self.markup.get_pressed_button(text)
         if pressed_button:
-            pressed_button.press(user)
+            await pressed_button.press(user)
         elif not only_check_press:
-            self._respond_to_input(user, text)
+            await self._respond_to_input(user, text)

@@ -15,5 +15,5 @@ class BPage(Page):
     def add_button(self, button):
         self.buttons.append(button)
 
-    def make_render_content(self, user):
+    async def make_render_content(self, user):
         pass
