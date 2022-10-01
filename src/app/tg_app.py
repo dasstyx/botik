@@ -1,6 +1,7 @@
 import telebot
 
 from src.app.app import App
+from src.app.raw_message_handlers import RawMessageHandlers
 from src.app.user_input import UserInput
 from src.communication.api import TgApi
 from src.navigation.navigation import Navigation
@@ -9,13 +10,8 @@ from src.page.page_factory import PageFactory, TgPageFactory
 import asyncio
 
 
-class TgRawMessageHandlers:
-    def __init__(self, bot, start_callback, users, navigator, user_input):
-        self.user_input = user_input
-        self.navigator = navigator
-        self.users = users
-        self.start_callback = start_callback
-
+class TgRawMessageHandlers(RawMessageHandlers):
+    def _initialize_handlers(self, bot):
         bot.message_handler(content_types=['text'])(self.message_reply)
         bot.message_handler(content_types=['contact'])(self.phone_reply)
         bot.message_handler(content_types=['location'])(self.location_reply)
@@ -27,16 +23,6 @@ class TgRawMessageHandlers:
         user_id = message.from_user.id
         return await self._get_user_from_id(user_id)
 
-    async def _get_user_from_id(self, user_id):
-        if self.users.exists(user_id):
-            user = self.users.get(user_id)
-            print(f"Existing user! id: {user.id}")
-        else:
-            user = self.users.add(user_id)
-            await self.navigator.change_page(user, '/')
-            print(f"New user! id: {user.id}")
-        return user
-
     async def callbacks_handle(self, call):
         data = call.data
 
@@ -44,16 +30,6 @@ class TgRawMessageHandlers:
         user = await self._get_user_from_id(user_id)
 
         await self.user_input.forward_inline_button(user, data)
-
-    async def start_reply(self, message):
-        user = self._get_user_from_message(message)
-
-        if self.start_callback:
-            await self.start_callback(user)
-
-    async def message_reply(self, message):
-        user = await self._get_user_from_message(message)
-        await self.user_input.handle_input(user, message.text)
 
     async def location_reply(self, message):
         user = await self._get_user_from_message(message)
