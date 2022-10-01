@@ -16,11 +16,11 @@ class SendMessage(ABC):
 class TgSendMessage(SendMessage):
 
     async def send(self, user, text):
-        self.bot.send_message(user.id, text)
+        await self.bot.send_message(user.id, text)
 
     async def send_with_keyboard(self, user, text, keyboard):
         markup = keyboard.get_native_markup()
-        self.bot.send_message(user.id, text, reply_markup=markup)
+        await self.bot.send_message(user.id, text, reply_markup=markup)
 
 
 class VkSendMessage(SendMessage):

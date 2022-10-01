@@ -1,4 +1,4 @@
-import telebot
+from telebot.async_telebot import AsyncTeleBot
 
 from src.app.tg_app import TgApp
 from src.page.page_data import PageData
@@ -6,7 +6,7 @@ from testapp.info_page import InfoPage
 from testapp.main_page import MainPage
 
 token = ''
-bot = telebot.TeleBot(token)
+bot = AsyncTeleBot(token)
 
 app = TgApp(bot)
 

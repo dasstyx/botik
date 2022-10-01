@@ -22,7 +22,7 @@ class Page(ABC):
     def _initialize(self, markup_factory: KeyboardMarkupFactory):
         self.markup = markup_factory.create(self._data.inline, self._data.one_time)
 
-    async def send_message(self, user, message):
+    async def _send_message(self, user, message):
         await self.api.msg.send(user, message)
 
     async def _send_keyboard_message(self, user, keyboard, text):

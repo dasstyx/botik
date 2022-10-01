@@ -5,7 +5,7 @@ from src.page.page import Page
 class InfoPage(Page):
 
     async def _respond_to_input(self, user, text):
-        await self.send_message(user, f"Нет, ты {text}")
+        await self._send_message(user, f"Нет, ты {text}")
 
     async def make_render_content(self, user):
         info_button = ButtonData("Back", ButtonCallback(self.navigator.get_back))

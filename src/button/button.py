@@ -44,10 +44,10 @@ class TgButton(Button):
         req_location = self.button_function == ButtonFunction.request_location
 
         if self.inline:
-            self.native_button = types.InlineKeyboardButton(text, callback_data=self.get_hash(),
+            self._native_button = types.InlineKeyboardButton(text, callback_data=self.get_hash(),
                                                             request_contact=req_phone, request_location=req_location)
         else:
-            self.native_button = types.KeyboardButton(text, request_contact=req_phone, request_location=req_location)
+            self._native_button = types.KeyboardButton(text, request_contact=req_phone, request_location=req_location)
 
 
 class VkButton(Button):

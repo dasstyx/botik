@@ -6,6 +6,8 @@ from src.communication.api import TgApi
 from src.navigation.navigation import Navigation
 from src.page.page_factory import PageFactory, TgPageFactory
 
+import asyncio
+
 
 class TgRawMessageHandlers:
     def __init__(self, bot, start_callback, users, navigator, user_input):
@@ -69,9 +71,9 @@ class TgRawMessageHandlers:
 
 class TgApp(App):
     def start(self):
-        self.bot.infinity_polling()
+        asyncio.run(self.bot.polling())
 
-    def __init__(self, bot: telebot.TeleBot, start_callback=None):
+    def __init__(self, bot, start_callback=None):
         super().__init__(bot)
         self.message_handlers = TgRawMessageHandlers(bot, start_callback,
                                                      self.users, self.navigator,
