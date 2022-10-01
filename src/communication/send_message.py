@@ -35,4 +35,4 @@ class VkSendMessage(SendMessage):
         uid = user.id
         markup = keyboard.get_native_markup()
         self.raw_api.messages.send(user_ids=uid, random_id=randrange(10e10), peer_id=uid,
-                                   message=text, keyboard=markup.get_keyboard())
+                                   message=text, keyboard=markup)

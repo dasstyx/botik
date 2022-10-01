@@ -1,23 +1,21 @@
 from typing import Sequence
 
+from vkbottle import Keyboard, Text
 from src.button.button import VkButton
 from src.keyboard.keyboard_markup import KeyboardMarkup
 
 
 class VkKeyboardMarkup(KeyboardMarkup):
-    def __init__(self, button_factory, inline, one_time):
-        super().__init__(button_factory, inline, one_time)
-        self.is_empty = True
+
+    def get_native_markup(self):
+        return self._markup.get_json()
 
     def _make(self, inline, one_time):
-        self._markup = VkKeyboard(one_time=one_time, inline=inline)
+        self._markup = Keyboard(one_time=one_time, inline=inline)
 
     def add_row(self, buttons: Sequence[VkButton]):
-        if self.is_empty:
-            self._markup.add_line()
-        else:
-            self.is_empty = False
+        buttons_data = [self._create_native_button(button).get_data_for_keyboard() for button in buttons]
+        for data in buttons_data:
+            self._markup.add(*data)
 
-        for button in buttons:
-            text = button.get_data()
-            self._markup.add_button(text)
+        self._markup.row()

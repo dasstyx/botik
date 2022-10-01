@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import Tuple
+from vkbottle import Text
 
 from telebot import types
 
@@ -51,3 +52,13 @@ class TgButton(Button):
                                                             request_contact=req_phone, request_location=req_location)
         else:
             self.native_button = types.KeyboardButton(text, request_contact=req_phone, request_location=req_location)
+
+
+class VkButton(Button):
+    def _create_native(self):
+        pass
+
+    def get_data_for_keyboard(self):
+        # TODO: Add a geo button type if possible
+        text = self._get_text()
+        return (Text(text),)

@@ -18,6 +18,6 @@ class TgApi(Api):
         self.api_type = ApiType.Tg
 
 class VKApi(Api):
-    def __init__(self, bot):
-        self.msg = VkSendMessage(bot)
+    def __init__(self, raw_api):
+        self.msg = VkSendMessage(raw_api)
         self.api_type = ApiType.Vk
