@@ -1,7 +1,5 @@
-import logging
 from abc import ABC, abstractmethod
 from pathlib import Path
-from typing import Union
 
 from src.communication.api import Api
 from src.keyboard.keyboard_markup import KeyboardMarkup
@@ -17,7 +15,7 @@ class Page(ABC):
 
         self.markup_factory = markup_factory
         self._data = data
-        self.markup:KeyboardMarkup = None
+        self.markup: KeyboardMarkup = None
 
         self._initialize(markup_factory)
 

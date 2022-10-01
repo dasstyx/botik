@@ -1,8 +1,6 @@
 from vkbottle import API
-
 from vkbottle.bot import Bot
-from src.app.app import App
-from src.app.tg_app import TgApp
+
 from src.app.vk_app import VkApp
 from src.page.page_data import PageData
 from testapp.info_page import InfoPage

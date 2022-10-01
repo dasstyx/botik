@@ -1,6 +1,5 @@
 import telebot
 
-from src.app.app import App
 from src.app.tg_app import TgApp
 from src.page.page_data import PageData
 from testapp.info_page import InfoPage

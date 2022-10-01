@@ -1,8 +1,7 @@
 from abc import ABC, abstractmethod
-from typing import Tuple
-from vkbottle import Text
 
 from telebot import types
+from vkbottle import Text
 
 from src.button.button_function import ButtonFunction
 

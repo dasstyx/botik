@@ -28,5 +28,3 @@ class App(ABC):
     def add_page(self, page_data=default_data):
         # page = self._page_fac.create(page_type, route, page_data)
         self.navigator.add_page_data(page_data)
-
-

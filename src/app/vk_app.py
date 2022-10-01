@@ -1,10 +1,11 @@
-from vkbottle.dispatch.rules.base import GeoRule, PayloadRule
+from vkbottle.dispatch.rules.base import GeoRule
 
 from src.app.app import App
 from src.app.user_input import UserInput
 from src.communication.api import VKApi
 from src.navigation.navigation import Navigation
 from src.page.page_factory import PageFactory, VkPageFactory
+
 
 class VkRawMessageHandlers:
     def __init__(self, bot, start_callback, users, navigator, user_input):

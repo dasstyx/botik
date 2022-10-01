@@ -1,11 +1,7 @@
-import logging
 from abc import ABC, abstractmethod
-from pathlib import Path
-from typing import Union, Type
 
 from src.button.button_factory import TgButtonFactory, VkButtonFactory
 from src.keyboard.markup_factory import TgKeyboardMarkupFactory, VkKeyboardMarkupFactory
-from src.page.page import Page
 from src.page.page_data import PageData
 
 

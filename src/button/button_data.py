@@ -1,5 +1,3 @@
-from abc import ABC
-
 from src.button.button_function import ButtonFunction
 
 
@@ -19,4 +17,3 @@ class ButtonData:
         self.button_function = button_function
         self.callback = callback
         self.text = text
-

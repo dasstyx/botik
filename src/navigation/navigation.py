@@ -1,4 +1,3 @@
-from src.page.page import Page
 from src.page.page_data import PageData
 
 
@@ -10,7 +9,7 @@ class Navigation:
     def init_page_factory(self, page_factory):
         self.page_factory = page_factory
 
-    def add_page_data(self, data:PageData):
+    def add_page_data(self, data: PageData):
         self.path_to_page_data[data.path] = data
 
     def get_page_data(self, path):
@@ -36,4 +35,3 @@ class Navigation:
         page = self._make_page(data)
         await page.make_render_content(user)
         return page
-

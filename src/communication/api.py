@@ -8,14 +8,17 @@ class ApiType(Enum):
     Tg = 1
     Vk = 2
 
+
 class Api(ABC):
     def __init__(self, bot):
-        self.msg:SendMessage = None
+        self.msg: SendMessage = None
+
 
 class TgApi(Api):
     def __init__(self, bot):
         self.msg = TgSendMessage(bot)
         self.api_type = ApiType.Tg
+
 
 class VKApi(Api):
     def __init__(self, raw_api):

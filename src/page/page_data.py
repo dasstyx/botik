@@ -12,6 +12,5 @@ class PageData(ABC):
         self.inline = inline
         self.__dict__.update(dependencies)
 
-
 # class TgPageData(PageData):
 #     pass

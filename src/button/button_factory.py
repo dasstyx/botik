@@ -1,8 +1,7 @@
-from abc import ABC, abstractmethod
+from abc import ABC
 
 from src.button.button import TgButton, VkButton
 from src.button.button_data import ButtonData
-from src.button.button_function import ButtonFunction
 
 
 class ButtonFactory(ABC):

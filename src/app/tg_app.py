@@ -71,7 +71,7 @@ class TgApp(App):
     def start(self):
         self.bot.infinity_polling()
 
-    def __init__(self, bot:telebot.TeleBot, start_callback=None):
+    def __init__(self, bot: telebot.TeleBot, start_callback=None):
         super().__init__(bot)
         self.message_handlers = TgRawMessageHandlers(bot, start_callback,
                                                      self.users, self.navigator,
@@ -85,5 +85,3 @@ class TgApp(App):
         self.navigator.init_page_factory(self._page_fac)
 
         self.user_input = UserInput(self.navigator, self.users)
-
-
