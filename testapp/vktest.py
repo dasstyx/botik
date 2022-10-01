@@ -15,6 +15,6 @@ bot_api = API(token)
 app = VkApp(bot, bot_api)
 
 app.add_page(PageData(MainPage, '/', inline=True, one_time=True))
-app.add_page(PageData(InfoPage, '/info', Inline=True, one_time=True))
+app.add_page(PageData(InfoPage, '/info', Inline=False, one_time=False))
 
 bot.run_forever()
