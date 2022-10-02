@@ -30,3 +30,4 @@ class VkRawMessageHandlers(RawMessageHandlers):
         location = message.geo
 
         await user.storage.add_entry("location", location)
+        await self.events.geo_share(user, location)

@@ -16,13 +16,13 @@ class TgApp(App):
         super().__init__(bot)
         self.message_handlers = TgRawMessageHandlers(bot, start_callback,
                                                      self.users, self.navigator,
-                                                     self.user_input)
+                                                     self.user_input, self.events)
 
     def initialize(self, bot):
         api = TgApi(bot)
         self.navigator = Navigation()
 
-        self._page_fac: PageFactory = TgPageFactory(api, self.navigator)
+        self._page_fac: PageFactory = TgPageFactory(api, self.navigator, self.events)
         self.navigator.init_page_factory(self._page_fac)
 
         self.user_input = UserInput(self.navigator, self.users)

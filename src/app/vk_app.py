@@ -16,7 +16,7 @@ class VkApp(App):
         self.initialize_with_raw_api(raw_api)
         self.message_handlers = VkRawMessageHandlers(bot, start_callback,
                                                      self.users, self.navigator,
-                                                     self.user_input)
+                                                     self.user_input, self.events)
 
     def initialize(self, bot):
         pass
@@ -25,7 +25,7 @@ class VkApp(App):
         api = VKApi(raw_api)
         self.navigator = Navigation()
 
-        self._page_fac: PageFactory = VkPageFactory(api, self.navigator)
+        self._page_fac: PageFactory = VkPageFactory(api, self.navigator, self.events)
         self.navigator.init_page_factory(self._page_fac)
 
         self.user_input = UserInput(self.navigator, self.users)

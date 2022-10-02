@@ -10,7 +10,7 @@ bot = AsyncTeleBot(token)
 
 app = TgApp(bot)
 
-app.add_page(PageData(MainPage, '/', inline=True, one_time=True))
+app.add_page(PageData(MainPage, '/', inline=False, one_time=True))
 app.add_page(PageData(InfoPage, '/info', Inline=True, one_time=True))
 
 app.start()

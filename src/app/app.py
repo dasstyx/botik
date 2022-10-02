@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 
+from src.app.message_handlers.bot_events import BotEvents
 from src.page.page_data import PageData
 from src.page.page_factory import PageFactory
 from src.user.user_base import UserBase
@@ -14,6 +15,7 @@ class App(ABC):
         self.navigator = None
         self.user_input = None
         self.users = UserBase()
+        self.events = BotEvents()
 
         self.initialize(bot)
 

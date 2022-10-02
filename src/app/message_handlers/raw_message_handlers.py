@@ -1,14 +1,21 @@
 from abc import ABC, abstractmethod
 
+from src.app.message_handlers.bot_events import BotEvents
+
 
 class RawMessageHandlers(ABC):
-    def __init__(self, bot, start_callback, users, navigator, user_input):
+    def __init__(self, bot, start_callback, users, navigator, user_input, events):
+        self.events = events
         self.user_input = user_input
         self.navigator = navigator
         self.users = users
         self.start_callback = start_callback
 
         self._initialize_handlers(bot)
+
+    @abstractmethod
+    def _initialize_handlers(self, bot):
+        pass
 
     @abstractmethod
     async def _get_user_from_message(self, message):
