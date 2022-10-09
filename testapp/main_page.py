@@ -1,5 +1,8 @@
+from vkbottle import KeyboardButtonColor
+
 from src.button.button_data import ButtonData, ButtonCallback
 from src.button.button_function import ButtonFunction
+from src.communication.api import ApiType
 from src.page.page import Page
 
 
@@ -14,7 +17,12 @@ class MainPage(Page):
     async def make_render_content(self, user):
         useless_button = ButtonData("Useless", ButtonCallback(self._send_message,
                                                               message=f"User {user.id} has pressed an useless button!"))
-        info_button = ButtonData("Info", ButtonCallback(self.navigator.change_page, path='/info'))
+
+        if self.api.api_type == ApiType.Vk:
+            info_button = ButtonData("Info", ButtonCallback(self.navigator.change_page, path='/info'), color=KeyboardButtonColor.PRIMARY)
+        else:
+            info_button = ButtonData("Info", ButtonCallback(self.navigator.change_page, path='/info'),
+                                     url="https://www.google.com/")
         bottom_button = ButtonData("Phone", None,
                                    ButtonFunction.request_phone)
         self.markup.add_row([

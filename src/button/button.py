@@ -8,8 +8,9 @@ from src.button.button_function import ButtonFunction
 
 class Button(ABC):
     # TODO: button_function is a bad name! Change it later!
-    def __init__(self, key, callback, inline=False, button_function: ButtonFunction = ButtonFunction.default):
-        # self.text_provider = text_provider
+    def __init__(self, key, callback, inline=False, button_function: ButtonFunction = ButtonFunction.default,
+                 native_args={}):
+        self.native_args = native_args
         self.inline = inline
         self.button_function = button_function
         self.callback = callback
@@ -45,9 +46,11 @@ class TgButton(Button):
 
         if self.inline:
             self._native_button = types.InlineKeyboardButton(text, callback_data=self.get_hash(),
-                                                            request_contact=req_phone, request_location=req_location)
+                                                             request_contact=req_phone, request_location=req_location,
+                                                             **self.native_args)
         else:
-            self._native_button = types.KeyboardButton(text, request_contact=req_phone, request_location=req_location)
+            self._native_button = types.KeyboardButton(text, request_contact=req_phone, request_location=req_location,
+                                                       **self.native_args)
 
 
 class VkButton(Button):
@@ -57,4 +60,6 @@ class VkButton(Button):
     def get_data_for_keyboard(self):
         # TODO: Add a geo button type if possible
         text = self._get_text()
-        return (Text(text),)
+        data = {"action": Text(text)}
+        data.update(self.native_args)
+        return data

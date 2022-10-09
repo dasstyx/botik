@@ -13,7 +13,8 @@ class ButtonCallback:
 class ButtonData:
     default_function = ButtonFunction.default
 
-    def __init__(self, text, callback: ButtonCallback, button_function: ButtonFunction = default_function):
+    def __init__(self, text, callback: ButtonCallback, button_function: ButtonFunction = default_function, **native_args):
+        self.native_args = native_args
         self.button_function = button_function
         self.callback = callback
         self.text = text

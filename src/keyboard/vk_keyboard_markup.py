@@ -18,7 +18,7 @@ class VkKeyboardMarkup(KeyboardMarkup):
 
         for i, row in enumerate(self.rows):
             for data in row:
-                self._markup.add(*data)
+                self._markup.add(**data)
             if i != len(self.rows) - 1:
                 self._markup.row()
 
