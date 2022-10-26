@@ -23,4 +23,4 @@ class NativeArgsPage(Page):
         back_button = ButtonData("Back", ButtonCallback(self.navigator.get_back))
         self.markup.add_row([info_button])
         self.markup.add_row([back_button])
-        await self._send_keyboard_message(user, self.markup, 'This is native args page...')
+        await self.send_keyboard_message(user, self.markup, 'This is native args page...')

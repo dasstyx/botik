@@ -8,14 +8,14 @@ from src.page.page import Page
 
 class MainPage(Page):
     async def handle_contact(self, user, phone):
-        await self._send_message(user, f"Номер {phone} получен")
+        await self.send_message(user, f"Номер {phone} получен")
 
     def _initialize(self, markup_factory):
         super()._initialize(markup_factory)
         self.bot_events.subscribe_contact_share(self.handle_contact)
 
     async def make_render_content(self, user):
-        useless_button = ButtonData("User ID", ButtonCallback(self._send_message,
+        useless_button = ButtonData("User ID", ButtonCallback(self.send_message,
                                                               message=f"User {user.id} has pressed an useless button!"))
         native_args_button = ButtonData("Native Args", ButtonCallback(self.navigator.change_page, path='/nargs'))
 
@@ -35,4 +35,4 @@ class MainPage(Page):
         ])
         if bottom_button:
             self.markup.add_row([bottom_button])
-        await self._send_keyboard_message(user, self.markup, 'Main')
+        await self.send_keyboard_message(user, self.markup, 'Main')
