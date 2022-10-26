@@ -7,21 +7,21 @@ from src.button.button_factory import ButtonFactory
 
 class KeyboardMarkup(ABC):
 
-    def __init__(self, button_factory: ButtonFactory, inline, one_time):
+    def __init__(self, button_factory: ButtonFactory, inline, one_time, native_args):
+        self.native_args = native_args
         self.inline = inline
         self.one_time = one_time
         self.button_factory = button_factory
         self.hash_to_buttons = {}
         self._markup = None
-
-        self._make(inline, one_time)
+        self.rows = []
 
     @abstractmethod
-    def _make(self, inline, one_time):
+    def _make(self):
         pass
 
     def get_native_markup(self):
-        return self._markup
+        return self._make()
 
     @abstractmethod
     def add_row(self, buttons: Sequence[ButtonData]):

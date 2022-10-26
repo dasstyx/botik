@@ -9,15 +9,15 @@ class KeyboardMarkupFactory(ABC):
         self.button_factory = button_factory
 
     @abstractmethod
-    def create(self, inline, one_time):
+    def create(self, inline, one_time, **native_args):
         pass
 
 
 class TgKeyboardMarkupFactory(KeyboardMarkupFactory):
-    def create(self, inline, one_time):
-        return TgKeyboardMarkup(self.button_factory, inline, one_time)
+    def create(self, inline, one_time, **native_args):
+        return TgKeyboardMarkup(self.button_factory, inline, one_time, native_args)
 
 
 class VkKeyboardMarkupFactory(KeyboardMarkupFactory):
-    def create(self, inline, one_time):
-        return VkKeyboardMarkup(self.button_factory, inline, one_time)
+    def create(self, inline, one_time, **native_args):
+        return VkKeyboardMarkup(self.button_factory, inline, one_time, native_args)
