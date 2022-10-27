@@ -33,5 +33,5 @@ class Navigation:
     async def _render_page(self, user, path):
         data = self.get_page_data(path)
         page = self._make_page(data)
-        await page.make_render_content(user)
+        await page.make_page_content(user)
         return page

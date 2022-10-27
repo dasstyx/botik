@@ -11,7 +11,7 @@ class Page(ABC):
 
     def __init__(self, path: str, api: Api, navigator, bot_events: BotEvents, markup_factory: KeyboardMarkupFactory, data):
         self.bot_events = bot_events
-        self.navigator = navigator
+        self.nav = navigator
         self.api = api
         self.path = path
 
@@ -33,7 +33,7 @@ class Page(ABC):
     async def send_keyboard_message(self, user, keyboard, text):
         await self.api.msg.send_with_keyboard(user, text, keyboard)
 
-    def get_deps(self):
+    def get_data(self):
         return self._data
 
     def get_back_path(self):
@@ -43,10 +43,10 @@ class Page(ABC):
         pass
 
     @abstractmethod
-    async def make_render_content(self, user):
+    async def make_page_content(self, user):
         pass
 
-    async def check_input(self, user, text, only_check_press=False):
+    async def handle_raw_input(self, user, text, only_check_press=False):
         # TODO: Don't trigger the inline buttons this way!
         pressed_button = self.markup.get_pressed_button(text)
         if pressed_button:

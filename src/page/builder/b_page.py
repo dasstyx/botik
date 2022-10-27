@@ -12,5 +12,5 @@ class BPage(Page):
         super().__init__(path, markup_factory, data)
         self.model = PageBuilderModel()
 
-    async def make_render_content(self, user):
+    async def make_page_content(self, user):
         pass

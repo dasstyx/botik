@@ -5,11 +5,11 @@ class UserInput:
 
     async def forward_inline_button(self, user, text):
         page = self.navigator.get_user_page(user)
-        await page.check_input(user, text, True)
+        await page.handle_raw_input(user, text, True)
         print("Forward button")
 
     async def handle_input(self, user, text):
         # TODO: Do not render page on every user message!
         page = self.navigator.get_user_page(user)
 
-        await page.check_input(user, text)
+        await page.handle_raw_input(user, text)

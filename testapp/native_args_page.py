@@ -13,14 +13,14 @@ class NativeArgsPage(Page):
         else:
             self.markup = markup_factory.create(self._data.inline, self._data.one_time)
 
-    async def make_render_content(self, user):
+    async def make_page_content(self, user):
         if self.api.api_type == ApiType.Vk:
-            info_button = ButtonData("Primary", ButtonCallback(self.navigator.change_page, path='/info'),
+            info_button = ButtonData("Primary", ButtonCallback(self.nav.change_page, path='/info'),
                                      color=KeyboardButtonColor.PRIMARY)
         else:
-            info_button = ButtonData("Primary", ButtonCallback(self.navigator.change_page, path='/info'))
+            info_button = ButtonData("Primary", ButtonCallback(self.nav.change_page, path='/info'))
 
-        back_button = ButtonData("Back", ButtonCallback(self.navigator.get_back))
+        back_button = ButtonData("Back", ButtonCallback(self.nav.get_back))
         self.markup.add_row([info_button])
         self.markup.add_row([back_button])
         await self.send_keyboard_message(user, self.markup, 'This is native args page...')

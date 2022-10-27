@@ -7,8 +7,8 @@ class InfoPage(Page):
     async def _respond_to_input(self, user, text):
         await self.send_message(user, f"Нет, ты {text}")
 
-    async def make_render_content(self, user):
-        back_button = ButtonData("Back", ButtonCallback(self.navigator.get_back))
+    async def make_page_content(self, user):
+        back_button = ButtonData("Back", ButtonCallback(self.nav.get_back))
         self.markup.add_row([
             back_button
         ])

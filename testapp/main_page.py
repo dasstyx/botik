@@ -14,16 +14,16 @@ class MainPage(Page):
         super()._initialize(markup_factory)
         self.bot_events.subscribe_contact_share(self.handle_contact)
 
-    async def make_render_content(self, user):
+    async def make_page_content(self, user):
         useless_button = ButtonData("User ID", ButtonCallback(self.send_message,
                                                               message=f"User {user.id} has pressed an useless button!"))
-        native_args_button = ButtonData("Native Args", ButtonCallback(self.navigator.change_page, path='/nargs'))
+        native_args_button = ButtonData("Native Args", ButtonCallback(self.nav.change_page, path='/nargs'))
 
         if self.api.api_type == ApiType.Vk:
-            info_button = ButtonData("Info", ButtonCallback(self.navigator.change_page, path='/info'), color=KeyboardButtonColor.PRIMARY)
-            bottom_button = ButtonData("Phone", ButtonCallback(self.navigator.change_page, path='/phone'))
+            info_button = ButtonData("Info", ButtonCallback(self.nav.change_page, path='/info'), color=KeyboardButtonColor.PRIMARY)
+            bottom_button = ButtonData("Phone", ButtonCallback(self.nav.change_page, path='/phone'))
         else:
-            info_button = ButtonData("Info", ButtonCallback(self.navigator.change_page, path='/info'))
+            info_button = ButtonData("Info", ButtonCallback(self.nav.change_page, path='/info'))
             bottom_button = ButtonData("Phone", None,
                                        ButtonFunction.request_phone)
 
