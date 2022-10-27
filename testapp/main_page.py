@@ -21,8 +21,7 @@ class MainPage(Page):
 
         if self.api.api_type == ApiType.Vk:
             info_button = ButtonData("Info", ButtonCallback(self.navigator.change_page, path='/info'), color=KeyboardButtonColor.PRIMARY)
-            # TODO: add navigate to input page button
-            bottom_button = None
+            bottom_button = ButtonData("Phone", ButtonCallback(self.navigator.change_page, path='/phone'))
         else:
             info_button = ButtonData("Info", ButtonCallback(self.navigator.change_page, path='/info'))
             bottom_button = ButtonData("Phone", None,
