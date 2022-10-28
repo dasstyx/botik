@@ -27,11 +27,11 @@ class Page(ABC):
     def _create_keyboard_markup(self, markup_factory):
         self.markup = markup_factory.create(self._data.inline, self._data.one_time)
 
-    async def send_message(self, user, message):
-        await self.api.msg.send(user, message)
-
-    async def send_keyboard_message(self, user, keyboard, text):
-        await self.api.msg.send_with_keyboard(user, text, keyboard)
+    async def send(self, user, message, markup=False):
+        if not markup:
+            await self.api.msg.send(user, message)
+        else:
+            await self.api.msg.send_with_keyboard(user, message, self.markup)
 
     def get_data(self):
         return self._data
