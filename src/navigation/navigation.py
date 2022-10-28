@@ -1,4 +1,6 @@
-from src.page.page_data import PageData
+import os
+from pathlib import Path
+import posixpath
 
 
 class Navigation:
@@ -9,7 +11,7 @@ class Navigation:
     def init_page_factory(self, page_factory):
         self.page_factory = page_factory
 
-    def add_page_data(self, data: PageData):
+    def add_page_data(self, data):
         self.path_to_page_data[data.path] = data
 
     def get_page_data(self, path):
@@ -18,8 +20,23 @@ class Navigation:
     def get_user_page(self, user):
         return user.current_page
 
+    @staticmethod
+    def concat_paths(source, destination):
+        destination = destination.lstrip('/')
+        if destination.startswith('~'):
+            return destination[1:]
+
+        # TODO: make a better OS-independent path handling
+        combined_path = os.path.normpath((os.path.join(source, destination)))
+        combined_path = str(combined_path).replace('\\', '/')
+        return combined_path
+
     async def change_page(self, user, path):
-        page = await self._render_page(user, path)
+        current_page = self.get_user_page(user)
+        current_path = current_page.path if current_page else '/'
+        concat_path = Navigation.concat_paths(current_path, path)
+
+        page = await self._render_page(user, concat_path)
         user.set_page(page)
 
     async def get_back(self, user):

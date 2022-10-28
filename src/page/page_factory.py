@@ -17,13 +17,6 @@ class PageFactory(ABC):
         pass
 
     def create(self, data: PageData):
-        # if type(path) is str:
-        #     path = Path(path)
-        # elif type(Path):
-        #     path = path
-        # else:
-        #     logging.warning("Unsupported path type")
-
         self._make_dependencies(data)
         return data.page_type(data.path, self.api, self.navigator, self.bot_events, self.markup_factory, data)
 

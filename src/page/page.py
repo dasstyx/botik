@@ -5,6 +5,7 @@ from src.app.message_handlers.bot_events import BotEvents
 from src.communication.api import Api
 from src.keyboard.keyboard_markup import KeyboardMarkup
 from src.keyboard.markup_factory import KeyboardMarkupFactory
+from src.navigation.navigation import Navigation
 
 
 class Page(ABC):
@@ -37,7 +38,7 @@ class Page(ABC):
         return self._data
 
     def get_back_path(self):
-        return str(Path(self.path).parent.as_posix())
+        return '..'
 
     async def _respond_to_input(self, user, text):
         pass
