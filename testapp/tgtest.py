@@ -1,9 +1,14 @@
+import os
+
 from telebot.async_telebot import AsyncTeleBot
 
 from pages_data import *
 from src.app.tg_app import TgApp
+from dotenv import load_dotenv
 
-token = ''
+load_dotenv()
+
+token = os.getenv('tg_token')
 bot = AsyncTeleBot(token)
 
 app = TgApp(bot)

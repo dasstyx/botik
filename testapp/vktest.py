@@ -1,10 +1,15 @@
+import os
+
 from vkbottle import API
 from vkbottle.bot import Bot
 
 from src.app.vk_app import VkApp
 from pages_data import *
+from dotenv import load_dotenv
 
-token = ""
+load_dotenv()
+
+token = os.getenv('vk_token')
 bot = Bot(token=token)
 bot_api = API(token)
 
