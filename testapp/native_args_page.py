@@ -8,8 +8,8 @@ from src.page.page import Page
 class NativeArgsPage(Page):
     def _create_keyboard_markup(self, markup_factory):
         if self.api.api_type == ApiType.Tg:
-            self.markup = markup_factory.create(self._data.inline, self._data.one_time, row_width=2,
-                                                resize_keyboard=True)
+            self.markup = markup_factory.create(self._data.inline, self._data.one_time,
+                                                input_field_placeholder="Placeholder text")
         else:
             self.markup = markup_factory.create(self._data.inline, self._data.one_time)
 
