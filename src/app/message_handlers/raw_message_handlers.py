@@ -1,7 +1,5 @@
 from abc import ABC, abstractmethod
 
-from src.app.message_handlers.bot_events import BotEvents
-
 
 class RawMessageHandlers(ABC):
     def __init__(self, bot, start_callback, users, navigator, user_input, events):

@@ -1,16 +1,15 @@
 from abc import ABC, abstractmethod
-from pathlib import Path
 
 from src.app.message_handlers.bot_events import BotEvents
 from src.communication.api import Api
 from src.keyboard.keyboard_markup import KeyboardMarkup
 from src.keyboard.markup_factory import KeyboardMarkupFactory
-from src.navigation.navigation import Navigation
 
 
 class Page(ABC):
 
-    def __init__(self, path: str, api: Api, navigator, bot_events: BotEvents, markup_factory: KeyboardMarkupFactory, data):
+    def __init__(self, path: str, api: Api, navigator, bot_events: BotEvents, markup_factory: KeyboardMarkupFactory,
+                 data):
         self.bot_events = bot_events
         self.nav = navigator
         self.api = api

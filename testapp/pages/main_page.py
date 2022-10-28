@@ -20,7 +20,8 @@ class MainPage(Page):
         native_args_button = ButtonData("Native Args", ButtonCallback(self.nav.change_page, path='/nargs'))
 
         if self.api.api_type == ApiType.Vk:
-            info_button = ButtonData("Info", ButtonCallback(self.nav.change_page, path='/info'), color=KeyboardButtonColor.PRIMARY)
+            info_button = ButtonData("Info", ButtonCallback(self.nav.change_page, path='/info'),
+                                     color=KeyboardButtonColor.PRIMARY)
             bottom_button = ButtonData("Phone", ButtonCallback(self.nav.change_page, path='/phone'))
         else:
             info_button = ButtonData("Info", ButtonCallback(self.nav.change_page, path='/info'))

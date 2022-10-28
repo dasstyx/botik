@@ -1,6 +1,4 @@
 import os
-from pathlib import Path
-import posixpath
 
 
 class Navigation:

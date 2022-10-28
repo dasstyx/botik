@@ -1,10 +1,10 @@
 import os
 
+from dotenv import load_dotenv
 from telebot.async_telebot import AsyncTeleBot
 
 from pages_data import *
 from src.app.tg_app import TgApp
-from dotenv import load_dotenv
 
 load_dotenv()
 

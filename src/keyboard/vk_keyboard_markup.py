@@ -3,7 +3,6 @@ from typing import Sequence
 from vkbottle import Keyboard
 
 from src.button.button import VkButton
-from src.button.button_factory import ButtonFactory
 from src.keyboard.keyboard_markup import KeyboardMarkup
 
 

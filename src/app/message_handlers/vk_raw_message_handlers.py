@@ -16,7 +16,6 @@ class VkRawMessageHandlers(RawMessageHandlers):
         user_id = message.from_id
         return await self._get_user_from_id(user_id)
 
-
     async def callbacks_handle(self, call):
         data = call.get_payload_json().get("inline")
 

@@ -1,11 +1,11 @@
+import asyncio
+
 from src.app.app import App
 from src.app.message_handlers.tg_raw_message_handlers import TgRawMessageHandlers
 from src.app.user_input import UserInput
 from src.communication.api import TgApi
 from src.navigation.navigation import Navigation
 from src.page.page_factory import PageFactory, TgPageFactory
-
-import asyncio
 
 
 class TgApp(App):
