@@ -34,7 +34,6 @@ class Button(ABC):
 
     def _get_text(self):
         return self.key
-        # return self.text_provider.get_text(self.key)
 
 
 class TgButton(Button):

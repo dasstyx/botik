@@ -6,7 +6,6 @@ from src.page.input_page import InputPage
 
 class PhonePage(InputPage):
     async def success(self, user, text):
-        # user.storage.add_entry("phone", text)
         await self.send(user, f"Номер {text} получен")
         await self.nav.change_page(user, '/')
 

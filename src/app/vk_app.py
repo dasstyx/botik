@@ -12,7 +12,6 @@ class VkApp(App):
 
     def __init__(self, bot, raw_api, start_callback=None):
         super().__init__(bot)
-        # self.raw_api = raw_api
         self.initialize_with_raw_api(raw_api)
         self.message_handlers = VkRawMessageHandlers(bot, start_callback,
                                                      self.users, self.navigator,

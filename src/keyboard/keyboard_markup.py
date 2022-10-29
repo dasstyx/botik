@@ -39,5 +39,4 @@ class KeyboardMarkup(ABC):
         if button_hash in self.hash_to_buttons:
             return self.hash_to_buttons[button_hash]
         else:
-            # logging.warning(f"The pressed button with hash '{hash}' doesn't exist on screen!")
             return None
