@@ -1,4 +1,8 @@
 import os
+import sys
+
+root_path = os.path.normpath(os.path.join(os.path.dirname(__file__), ".."))
+sys.path.append(root_path)
 
 from dotenv import load_dotenv
 from vkbottle import API
