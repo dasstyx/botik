@@ -11,10 +11,10 @@ class MainPage(Page):
         await self.send(user, f"Номер {phone} получен")
 
     def _initialize(self):
-        self.bot_events.subscribe_contact_share(self.handle_contact)
+        self.bot_events.contact_share.subscribe(self.handle_contact)
 
     def destruct(self):
-        self.bot_events.unsubscribe_contact_share(self.handle_contact)
+        self.bot_events.contact_share.unsubscribe(self.handle_contact)
 
     async def make_page_content(self, user):
         useless_button = ButtonData("User ID", ButtonCallback(self.send,

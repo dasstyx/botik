@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from src.app.message_handlers.bot_events import BotEvents
+from src.app.message_handlers.events.bot_events import BotEvents
 from src.communication.api import Api
 from src.keyboard.keyboard_markup import KeyboardMarkup
 from src.keyboard.markup_factory import KeyboardMarkupFactory

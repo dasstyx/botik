@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from src.app.message_handlers.bot_events import BotEvents
+from src.app.message_handlers.events.bot_events import BotEvents
 from src.page.page_factory import PageFactory
 from src.user.user_base import UserBase
 
