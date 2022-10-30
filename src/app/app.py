@@ -6,6 +6,9 @@ from src.user.user_base import UserBase
 
 
 class App(ABC):
+    """
+    The root object of bot.
+    """
 
     def __init__(self, bot):
         self.bot = bot
@@ -19,6 +22,9 @@ class App(ABC):
 
     @abstractmethod
     def start(self):
+        """
+        Call this method to start listening for connections.
+        """
         pass
 
     @abstractmethod
@@ -26,4 +32,7 @@ class App(ABC):
         pass
 
     def add_page(self, page_data):
+        """
+        Add the PageData model to be handled by bot.
+        """
         self.navigator.add_page_data(page_data)

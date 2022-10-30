@@ -2,6 +2,9 @@ from src.user.user import User
 
 
 class UserBase:
+    """
+    A store of id mappings to a User object.
+    """
     def __init__(self):
         self.users = {}
 

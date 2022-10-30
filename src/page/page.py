@@ -23,15 +23,31 @@ class Page(ABC):
         self._initialize()
 
     def _initialize(self):
+        """
+        Called during the instantiation phase.
+        """
         pass
 
     def destruct(self):
+        """
+        Called when the user changes the page.
+        Must be overriden, if page instance is subscribed to bot events.
+        """
         pass
 
     def _create_keyboard_markup(self, markup_factory):
+        """
+        Construct the new self.markup object.
+        """
         self.markup = markup_factory.create(self._data.inline, self._data.one_time)
 
     async def send(self, user, message, markup=False):
+        """
+        Send a text message to user shorthand method.
+        :param user: User object.
+        :param message: Text message to send to user.
+        :param markup: Should the keyboard be sent?
+        """
         if not markup:
             await self.api.msg.send(user, message)
         else:
@@ -41,16 +57,33 @@ class Page(ABC):
         return self._data
 
     def get_back_path(self):
+        """
+        Get path of the previous page, when navigation's get_back method was called.
+        Override to get a specific page path.
+        :return: Page path string
+        """
         return '..'
 
     async def _respond_to_input(self, user, text):
+        """
+        Called to handle user input text.
+        Overridable.
+        """
         pass
 
     @abstractmethod
     async def make_page_content(self, user):
+        """
+        This method is called when a user navigates to the page.
+        Override it to send messages and keyboard.
+        """
         pass
 
     async def handle_raw_input(self, user, text, only_check_press=False):
+        """
+        Called when user sends anything to bot while this page instance is active.
+        Don't override.
+        """
         # TODO: Don't trigger the inline buttons this way!
         pressed_button = self.markup.get_pressed_button(text)
         if pressed_button:

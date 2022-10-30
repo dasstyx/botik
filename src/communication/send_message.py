@@ -3,6 +3,9 @@ from random import randrange
 
 
 class SendMessage(ABC):
+    """
+    API wrapper for sending messages.
+    """
     def __init__(self, bot):
         self.bot = bot
 

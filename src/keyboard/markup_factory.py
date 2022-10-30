@@ -10,6 +10,9 @@ class KeyboardMarkupFactory(ABC):
 
     @abstractmethod
     def create(self, inline, one_time, **native_args):
+        """
+        :param native_args: Any arguments to pass to the backbone API keyboard markup's constructor.
+        """
         pass
 
 
