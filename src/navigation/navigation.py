@@ -13,7 +13,7 @@ class Navigation:
         self.path_to_page_data[data.path] = data
 
     def get_page_data(self, path):
-        return self.path_to_page_data[path]
+        return self.path_to_page_data.get(path)
 
     def get_user_page(self, user):
         return user.current_page
@@ -35,7 +35,10 @@ class Navigation:
         concat_path = Navigation.concat_paths(current_path, path)
 
         page = await self._render_page(user, concat_path)
-        user.set_page(page)
+        if page:
+            user.set_page(page)
+            if current_page:
+                current_page.destruct()
 
     async def get_back(self, user):
         page = self.get_user_page(user)
@@ -47,6 +50,9 @@ class Navigation:
 
     async def _render_page(self, user, path):
         data = self.get_page_data(path)
+        if not data:
+            return None
+
         page = self._make_page(data)
         await page.make_page_content(user)
         return page

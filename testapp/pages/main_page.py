@@ -10,9 +10,11 @@ class MainPage(Page):
     async def handle_contact(self, user, phone):
         await self.send(user, f"Номер {phone} получен")
 
-    def _initialize(self, markup_factory):
-        super()._initialize(markup_factory)
+    def _initialize(self):
         self.bot_events.subscribe_contact_share(self.handle_contact)
+
+    def destruct(self):
+        self.bot_events.unsubscribe_contact_share(self.handle_contact)
 
     async def make_page_content(self, user):
         useless_button = ButtonData("User ID", ButtonCallback(self.send,

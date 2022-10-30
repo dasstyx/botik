@@ -19,10 +19,14 @@ class Page(ABC):
         self._data = data
         self.markup: KeyboardMarkup = None
 
-        self._initialize(markup_factory)
-
-    def _initialize(self, markup_factory: KeyboardMarkupFactory):
         self._create_keyboard_markup(markup_factory)
+        self._initialize()
+
+    def _initialize(self):
+        pass
+
+    def destruct(self):
+        pass
 
     def _create_keyboard_markup(self, markup_factory):
         self.markup = markup_factory.create(self._data.inline, self._data.one_time)

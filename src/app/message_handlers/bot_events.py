@@ -38,8 +38,14 @@ class BotEvents:
     def subscribe_contact_share(self, func: Callable[[User, str], Any]):
         self.contact_share += func
 
+    def unsubscribe_contact_share(self, func: Callable[[User, str], Any]):
+        self.contact_share -= func
+
     def subscribe_geo_share(self, func: Callable[[User, Any], Any]):
         self.geo_share += func
+
+    def unsubscribe_geo_share(self, func: Callable[[User, Any], Any]):
+        self.geo_share -= func
 
     @event
     async def contact_share(self):
