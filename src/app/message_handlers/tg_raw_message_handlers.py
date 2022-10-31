@@ -1,3 +1,5 @@
+import logging
+
 from src.app.message_handlers.raw_message_handlers import RawMessageHandlers
 
 
@@ -32,7 +34,7 @@ class TgRawMessageHandlers(RawMessageHandlers):
     async def phone_reply(self, message):
         user = await self._get_user_from_message(message)
         number = message.contact.phone_number
-        print(f"Got a number! {number}")
+        logging.debug(f"Got a number! {number}")
 
         await user.storage.add_entry("phone", number)
         await self.events.contact_share(user, number)

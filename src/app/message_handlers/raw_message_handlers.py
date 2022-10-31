@@ -1,3 +1,4 @@
+import logging
 from abc import ABC, abstractmethod
 
 
@@ -22,11 +23,11 @@ class RawMessageHandlers(ABC):
     async def _get_user_from_id(self, user_id):
         if self.users.exists(user_id):
             user = self.users.get(user_id)
-            print(f"Existing user! id: {user.id}")
+            logging.debug(f"Existing user! id: {user.id}")
         else:
             user = self.users.add(user_id)
             await self.navigator.change_page(user, '/')
-            print(f"New user! id: {user.id}")
+            logging.debug(f"New user! id: {user.id}")
         return user
 
     async def start_reply(self, message):
