@@ -29,7 +29,7 @@ class TgRawMessageHandlers(RawMessageHandlers):
         location = message.location
 
         await user.storage.add_entry("location", location)
-        self.events.geo_share(user, location)
+        await self.events.geo_share(user, location)
 
     async def phone_reply(self, message):
         user = await self._get_user_from_message(message)
