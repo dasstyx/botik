@@ -17,7 +17,3 @@ class TgKeyboardMarkup(KeyboardMarkup):
             for data in row:
                 self._markup.row(data)
         return self._markup
-
-    def add_row(self, buttons):
-        buttons_data = [self._create_native_button(button).get_native_button() for button in buttons]
-        self.rows.append(buttons_data)

@@ -23,7 +23,3 @@ class VkKeyboardMarkup(KeyboardMarkup):
             if i != len(self.rows) - 1:
                 self._markup.row()
         return self._markup
-
-    def add_row(self, buttons: Sequence[VkButton]):
-        buttons_data = [self._create_native_button(button).get_data_for_keyboard() for button in buttons]
-        self.rows.append(buttons_data)

@@ -23,14 +23,14 @@ class KeyboardMarkup(ABC):
     def get_native_markup(self):
         return self._make()
 
-    @abstractmethod
     def add_row(self, buttons: Sequence[ButtonData]):
-        pass
+        buttons_data = [self._create_native_button(button).native_data for button in buttons]
+        self.rows.append(buttons_data)
 
     def _create_native_button(self, button: ButtonData):
         button = self.button_factory.create(button)
 
-        button_hash = button.get_hash()
+        button_hash = button.get_text()
         self.hash_to_buttons[button_hash] = button
 
         return button
