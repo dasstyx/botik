@@ -1,3 +1,4 @@
+import logging
 import os
 import sys
 
@@ -11,6 +12,8 @@ from pages_data import *
 from src.app.tg_app import TgApp
 
 load_dotenv()
+
+logging.getLogger().setLevel(logging.DEBUG)
 
 token = os.getenv('tg_token')
 bot = AsyncTeleBot(token)

@@ -1,3 +1,4 @@
+import logging
 import os
 import sys
 
@@ -12,6 +13,8 @@ from pages_data import *
 from src.app.vk_app import VkApp
 
 load_dotenv()
+
+logging.getLogger().setLevel(logging.DEBUG)
 
 token = os.getenv('vk_token')
 bot = Bot(token=token)

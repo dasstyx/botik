@@ -1,3 +1,4 @@
+import logging
 import os
 
 
@@ -50,6 +51,8 @@ class Navigation:
             user.set_page(page)
             if current_page:
                 current_page.destruct()
+            logging.debug(f"User {user.id} has changed page\n\tfrom {current_path}\n\tto {concat_path}")
+
 
     async def get_back(self, user):
         """
