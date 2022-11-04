@@ -1,8 +1,9 @@
 from vkbottle import KeyboardButtonColor
-from src.core.api.api import ApiType
+from src.core.api.api_type import ApiType
 from src.core.input.keyboard.button.button_data import ButtonCallback, ButtonData
 from src.core.input.keyboard.button.button_function import ButtonFunction
 from src.core.page.page import Page
+from src.vk.api.api_type import VkApiType
 
 
 class MainPage(Page):
@@ -20,7 +21,7 @@ class MainPage(Page):
                                                               message=f"User {user.id} has pressed an useless button!"))
         native_args_button = ButtonData("Native Args", ButtonCallback(self.nav.change_page, path='/nargs'))
 
-        if self.api.api_type == ApiType.Vk:
+        if self.api.api_type == VkApiType:
             info_button = ButtonData("Info", ButtonCallback(self.nav.change_page, path='/info'),
                                      color=KeyboardButtonColor.PRIMARY)
             bottom_button = ButtonData("Phone", ButtonCallback(self.nav.change_page, path='/phone'))
