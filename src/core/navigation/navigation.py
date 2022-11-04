@@ -27,14 +27,18 @@ class Navigation:
         :param destination: Destination relative path
         :return: concatenated path
         """
+
+        def fix_prefix(x): return x if x.startswith('/') else '/' + x
+
         destination = destination.lstrip('/')
         if destination.startswith('~'):
-            return destination[1:]
+            destination = destination[1:]
+            return fix_prefix(destination)
 
         # TODO: make a better OS-independent path handling
         combined_path = os.path.normpath((os.path.join(source, destination)))
         combined_path = str(combined_path).replace('\\', '/')
-        return combined_path
+        return fix_prefix(combined_path)
 
     async def change_page(self, user, path):
         """
