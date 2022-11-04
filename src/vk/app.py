@@ -1,5 +1,5 @@
 from src.core.app import App
-from src.vk.input.message_handlers.vk_raw_message_handlers import VkRawMessageHandlers
+from src.vk.input.message_handlers.raw_message_handlers import RawMessageHandlers
 from src.core.input.user_input import UserInput
 from src.vk.communication.api import VKApi
 from src.core.navigation.navigation import Navigation
@@ -14,9 +14,9 @@ class VkApp(App):
     def __init__(self, bot, raw_api, start_callback=None):
         super().__init__(bot)
         self.initialize_with_raw_api(raw_api)
-        self.message_handlers = VkRawMessageHandlers(bot, start_callback,
-                                                     self.users, self.navigator,
-                                                     self.user_input, self.events)
+        self.message_handlers = RawMessageHandlers(bot, start_callback,
+                                                   self.users, self.navigator,
+                                                   self.user_input, self.events)
 
     def initialize(self, bot):
         pass

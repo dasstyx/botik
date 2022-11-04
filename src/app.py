@@ -1,7 +1,7 @@
 import asyncio
 
 from src.core.app import App
-from src.tg.input.message_handlers.tg_raw_message_handlers import TgRawMessageHandlers
+from src.tg.input.message_handlers.raw_message_handlers import RawMessageHandlers
 from src.core.input.user_input import UserInput
 from src.tg.communication.api import TgApi
 from src.core.navigation.navigation import Navigation
@@ -15,9 +15,9 @@ class TgApp(App):
 
     def __init__(self, bot, start_callback=None):
         super().__init__(bot)
-        self.message_handlers = TgRawMessageHandlers(bot, start_callback,
-                                                     self.users, self.navigator,
-                                                     self.user_input, self.events)
+        self.message_handlers = RawMessageHandlers(bot, start_callback,
+                                                   self.users, self.navigator,
+                                                   self.user_input, self.events)
 
     def initialize(self, bot):
         api = TgApi(bot)

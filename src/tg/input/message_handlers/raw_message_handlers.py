@@ -3,7 +3,7 @@ import logging
 from src.core.input.message_handlers.raw_message_handlers import RawMessageHandlers
 
 
-class TgRawMessageHandlers(RawMessageHandlers):
+class RawMessageHandlers(RawMessageHandlers):
     def _initialize_handlers(self, bot):
         bot.message_handler(content_types=['text'])(self.message_reply)
         bot.message_handler(content_types=['contact'])(self.phone_reply)

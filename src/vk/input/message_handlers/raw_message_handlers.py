@@ -3,7 +3,7 @@ from vkbottle.dispatch.rules.base import GeoRule
 from src.core.input.message_handlers.raw_message_handlers import RawMessageHandlers
 
 
-class VkRawMessageHandlers(RawMessageHandlers):
+class RawMessageHandlers(RawMessageHandlers):
     def _initialize_handlers(self, bot):
         bot.on.private_message()(self.message_reply)
         bot.on.private_message(GeoRule())(self.location_reply)
