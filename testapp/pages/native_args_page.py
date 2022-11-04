@@ -1,8 +1,8 @@
 from vkbottle import KeyboardButtonColor
 
-from src.button.button_data import ButtonData, ButtonCallback
-from src.communication.api import ApiType
-from src.page.page import Page
+from src.core.button.button_data import ButtonCallback, ButtonData
+from src.core.communication.api import ApiType
+from src.core.page.page import Page
 
 
 class NativeArgsPage(Page):

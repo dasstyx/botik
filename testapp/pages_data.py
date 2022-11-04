@@ -1,4 +1,4 @@
-from src.page.page_data import PageData
+from src.core.page.page_data import PageData
 from testapp.pages.info_page import InfoPage
 from testapp.pages.main_page import MainPage
 from testapp.pages.native_args_page import NativeArgsPage

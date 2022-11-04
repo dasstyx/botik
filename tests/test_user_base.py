@@ -1,7 +1,6 @@
 from unittest import TestCase
 
-from src.user.user import User
-from src.user.user_base import UserBase
+from src.core.user.user_base import UserBase
 
 
 class TestUserBase(TestCase):

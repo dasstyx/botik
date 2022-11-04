@@ -1,7 +1,7 @@
 import re
 
-from src.button.button_data import ButtonData, ButtonCallback
-from src.page.input_page import InputPage
+from src.core.button.button_data import ButtonData, ButtonCallback
+from src.core.page.input_page import InputPage
 
 
 class PhonePage(InputPage):

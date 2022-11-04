@@ -1,7 +1,7 @@
 from unittest import IsolatedAsyncioTestCase
 from unittest.mock import patch
 
-from src.app.message_handlers.events.bot_event import BotEvent
+from src.core.app.message_handlers.events.bot_event import BotEvent
 
 
 class TestBotEvent(IsolatedAsyncioTestCase):

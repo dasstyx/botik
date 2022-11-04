@@ -1,5 +1,5 @@
-from src.button.button_data import ButtonData, ButtonCallback
-from src.page.page import Page
+from src.core.button.button_data import ButtonData, ButtonCallback
+from src.core.page.page import Page
 
 
 class InfoPage(Page):

@@ -10,7 +10,7 @@ from vkbottle import API
 from vkbottle.bot import Bot
 
 from pages_data import *
-from src.app.vk_app import VkApp
+from src.vk.app.app import VkApp
 
 load_dotenv()
 
