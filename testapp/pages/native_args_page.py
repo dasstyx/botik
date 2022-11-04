@@ -6,12 +6,12 @@ from src.page.page import Page
 
 
 class NativeArgsPage(Page):
-    def _create_keyboard_markup(self, markup_factory):
+    def _create_keyboard_markup(self):
         if self.api.api_type == ApiType.Tg:
-            self.markup = markup_factory.create(inline=self._data.inline, one_time=self._data.one_time,
-                                                input_field_placeholder="Placeholder text")
+            self.markup = self._markup_factory.create(inline=self._data.inline, one_time=self._data.one_time,
+                                                      input_field_placeholder="Placeholder text")
         else:
-            self.markup = markup_factory.create(inline=self._data.inline, one_time=self._data.one_time)
+            self.markup = self._markup_factory.create(inline=self._data.inline, one_time=self._data.one_time)
 
     async def make_page_content(self, user):
         if self.api.api_type == ApiType.Vk:

@@ -14,12 +14,12 @@ class Page(ABC):
         self.nav = navigator
         self.api = api
         self.path = path
-
-        self.markup_factory = markup_factory
-        self._data = data
         self.markup: KeyboardMarkup = None
 
-        self._create_keyboard_markup(markup_factory)
+        self._markup_factory = markup_factory
+        self._data = data
+
+        self._create_keyboard_markup()
         self._initialize()
 
     def _initialize(self):
@@ -35,11 +35,11 @@ class Page(ABC):
         """
         pass
 
-    def _create_keyboard_markup(self, markup_factory):
+    def _create_keyboard_markup(self):
         """
         Construct the new self.markup object.
         """
-        self.markup = markup_factory.create(inline=self._data.inline, one_time=self._data.one_time)
+        self.markup = self._markup_factory.create(inline=self._data.inline, one_time=self._data.one_time)
 
     async def send(self, user, message, markup=False):
         """
