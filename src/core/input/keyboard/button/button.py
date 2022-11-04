@@ -1,9 +1,6 @@
 from abc import ABC, abstractmethod
 
-from telebot import types
-from vkbottle import Text
-
-from src.core.button.button_function import ButtonFunction
+from src.core.input.keyboard.button.button_function import ButtonFunction
 
 
 class Button(ABC):

@@ -1,4 +1,4 @@
-from src.core.button.button_data import ButtonData, ButtonCallback
+from src.core.input.keyboard.button.button_data import ButtonData, ButtonCallback
 from src.core.page.page import Page
 
 

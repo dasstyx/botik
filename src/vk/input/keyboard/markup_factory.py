@@ -1,5 +1,5 @@
-from src.core.keyboard.markup_factory import KeyboardMarkupFactory
-from src.vk.keyboard.keyboard_markup import VkKeyboardMarkup
+from src.core.input.keyboard.markup_factory import KeyboardMarkupFactory
+from src.vk.input.keyboard.keyboard_markup import VkKeyboardMarkup
 
 
 class VkKeyboardMarkupFactory(KeyboardMarkupFactory):

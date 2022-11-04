@@ -1,8 +1,7 @@
 from vkbottle import KeyboardButtonColor
-
-from src.core.button.button_data import ButtonCallback, ButtonData
-from src.core.button.button_function import ButtonFunction
-from src.core.communication.api import ApiType
+from src.core.api.api import ApiType
+from src.core.input.keyboard.button.button_data import ButtonCallback, ButtonData
+from src.core.input.keyboard.button.button_function import ButtonFunction
 from src.core.page.page import Page
 
 

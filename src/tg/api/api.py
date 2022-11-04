@@ -1,5 +1,5 @@
-from src.core.communication.api import Api, ApiType
-from src.tg.communication.send_message import TgSendMessage
+from src.core.api.api import Api, ApiType
+from src.tg.api.send_message import TgSendMessage
 
 
 class TgApi(Api):

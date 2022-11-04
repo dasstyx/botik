@@ -1,6 +1,6 @@
 from abc import ABC
 
-from src.core.button.button_data import ButtonData
+from src.core.input.keyboard.button.button_data import ButtonData
 
 
 class ButtonFactory(ABC):

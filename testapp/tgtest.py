@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 from telebot.async_telebot import AsyncTeleBot
 
 from pages_data import *
-from src.app import TgApp
+from src.tg.app import TgApp
 
 load_dotenv()
 

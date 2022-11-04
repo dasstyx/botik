@@ -1,8 +1,8 @@
 from abc import ABC, abstractmethod
 from typing import Sequence
 
-from src.core.button.button_data import ButtonData
-from src.core.button.button_factory import ButtonFactory
+from src.core.input.keyboard.button.button_data import ButtonData
+from src.core.input.keyboard.button.button_factory import ButtonFactory
 
 
 class KeyboardMarkup(ABC):

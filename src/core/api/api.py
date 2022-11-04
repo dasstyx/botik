@@ -1,7 +1,7 @@
 from abc import ABC
 from enum import Enum
 
-from src.core.communication.send_message import SendMessage
+from src.core.api.send_message import SendMessage
 
 
 class ApiType(Enum):

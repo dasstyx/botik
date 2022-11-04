@@ -1,5 +1,5 @@
-from src.core.keyboard.markup_factory import KeyboardMarkupFactory
-from src.tg.keyboard.keyboard_markup import TgKeyboardMarkup
+from src.core.input.keyboard.markup_factory import KeyboardMarkupFactory
+from src.tg.input.keyboard.keyboard_markup import TgKeyboardMarkup
 
 
 class TgKeyboardMarkupFactory(KeyboardMarkupFactory):

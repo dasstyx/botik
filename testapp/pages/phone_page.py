@@ -1,6 +1,6 @@
 import re
 
-from src.core.button.button_data import ButtonData, ButtonCallback
+from src.core.input.keyboard.button.button_data import ButtonCallback
 from src.core.page.input_page import InputPage
 
 
@@ -16,6 +16,7 @@ class PhonePage(InputPage):
         return re.match(r"^(\+\d{1,3}[- ]?)?\d{10}$", text)
 
     async def make_page_content(self, user):
+        from src.core.input.keyboard.button.button_data import ButtonData
         back_button = ButtonData("Back", ButtonCallback(self.nav.get_back))
         self.markup.add_row([back_button])
 

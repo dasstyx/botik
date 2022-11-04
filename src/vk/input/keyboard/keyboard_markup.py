@@ -1,7 +1,7 @@
 from vkbottle import Keyboard
 
-from src.core.button.button_factory import ButtonFactory
-from src.core.keyboard.keyboard_markup import KeyboardMarkup
+from src.core.input.keyboard.button.button_factory import ButtonFactory
+from src.core.input.keyboard.keyboard_markup import KeyboardMarkup
 
 
 class VkKeyboardMarkup(KeyboardMarkup):

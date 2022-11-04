@@ -1,7 +1,7 @@
 from telebot import types
 
-from src.core.button.button import Button
-from src.core.button.button_function import ButtonFunction
+from src.core.input.keyboard.button.button import Button
+from src.core.input.keyboard.button.button_function import ButtonFunction
 
 
 class TgButton(Button):

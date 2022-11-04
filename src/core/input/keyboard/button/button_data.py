@@ -1,4 +1,4 @@
-from src.core.button.button_function import ButtonFunction
+from src.core.input.keyboard.button.button_function import ButtonFunction
 
 
 class ButtonCallback:

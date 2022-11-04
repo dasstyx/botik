@@ -1,6 +1,6 @@
 from telebot import types
 
-from src.core.keyboard.keyboard_markup import KeyboardMarkup
+from src.core.input.keyboard.keyboard_markup import KeyboardMarkup
 
 
 class TgKeyboardMarkup(KeyboardMarkup):

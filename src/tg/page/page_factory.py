@@ -1,7 +1,7 @@
 from src.core.page.page_data import PageData
 from src.core.page.page_factory import PageFactory
-from src.tg.button.button_factory import TgButtonFactory
-from src.tg.keyboard.markup_factory import TgKeyboardMarkupFactory
+from src.tg.input.keyboard.button.button_factory import TgButtonFactory
+from src.tg.input.keyboard.markup_factory import TgKeyboardMarkupFactory
 
 
 class TgPageFactory(PageFactory):

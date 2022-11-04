@@ -1,6 +1,6 @@
 from random import randrange
 
-from src.core.communication.send_message import SendMessage
+from src.core.api.send_message import SendMessage
 
 
 class VkSendMessage(SendMessage):
