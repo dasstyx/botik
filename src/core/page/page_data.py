@@ -22,11 +22,11 @@ class PageData(ABC):
         :param one_time: Whether the page is one time.
         :param dependencies: Dependencies that the page can use at runtime.
         """
-            self.path = self._initialize_path(path, parent)
-            self.page_type = page_type
-            self.one_time = one_time
-            self.inline = inline
-            self.__dict__.update(dependencies)
+        self.path = self._initialize_path(path, parent)
+        self.page_type = page_type
+        self.one_time = one_time
+        self.inline = inline
+        self.__dict__.update(dependencies)
 
     def _initialize_path(self, path, parent):
         if not parent:

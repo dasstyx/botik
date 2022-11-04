@@ -1,8 +1,8 @@
 import asyncio
 
-from src.core.app.app import App
-from src.tg.app.message_handlers.tg_raw_message_handlers import TgRawMessageHandlers
-from src.core.app.user_input import UserInput
+from src.core.app import App
+from src.tg.input.message_handlers.tg_raw_message_handlers import TgRawMessageHandlers
+from src.core.input.user_input import UserInput
 from src.tg.communication.api import TgApi
 from src.core.navigation.navigation import Navigation
 from src.core.page.page_factory import PageFactory

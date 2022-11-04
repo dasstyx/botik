@@ -1,6 +1,6 @@
 from vkbottle.dispatch.rules.base import GeoRule
 
-from src.core.app.message_handlers.raw_message_handlers import RawMessageHandlers
+from src.core.input.message_handlers.raw_message_handlers import RawMessageHandlers
 
 
 class VkRawMessageHandlers(RawMessageHandlers):

@@ -1,6 +1,6 @@
 import logging
 
-from src.core.app.message_handlers.raw_message_handlers import RawMessageHandlers
+from src.core.input.message_handlers.raw_message_handlers import RawMessageHandlers
 
 
 class TgRawMessageHandlers(RawMessageHandlers):
