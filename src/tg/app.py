@@ -1,11 +1,11 @@
 import asyncio
 
 from src.core.app import App
-from src.tg.input.message_handlers.raw_message_handlers import RawMessageHandlers
 from src.core.input.user_input import UserInput
-from src.tg.api.api import TgApi
 from src.core.navigation.navigation import Navigation
 from src.core.page.page_factory import PageFactory
+from src.tg.api.api import TgApi
+from src.tg.input.message_handlers.raw_message_handlers import RawMessageHandlers
 from src.tg.page.page_factory import TgPageFactory
 
 

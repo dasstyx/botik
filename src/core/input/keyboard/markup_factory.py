@@ -11,4 +11,3 @@ class KeyboardMarkupFactory(ABC):
         :param native_args: Any arguments to pass to the backbone API keyboard markup's constructor.
         """
         pass
-

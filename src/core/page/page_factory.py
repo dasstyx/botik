@@ -17,5 +17,3 @@ class PageFactory(ABC):
     def create(self, data: PageData):
         self._make_dependencies(data)
         return data.page_type(data.path, self.api, self.navigator, self.bot_events, self.markup_factory, data)
-
-

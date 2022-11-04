@@ -53,7 +53,6 @@ class Navigation:
                 current_page.destruct()
             logging.debug(f"User {user.id} has changed page\n\tfrom {current_path}\n\tto {concat_path}")
 
-
     async def get_back(self, user):
         """
         Gets the path from the active page's 'get_back_path' method and navigates to the page at that path.

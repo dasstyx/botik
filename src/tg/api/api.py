@@ -1,5 +1,4 @@
 from src.core.api.api import Api
-from src.core.api.api_type import ApiType
 from src.tg.api.api_type import TgApiType
 from src.tg.api.send_message import TgSendMessage
 

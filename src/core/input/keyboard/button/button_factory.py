@@ -13,5 +13,3 @@ class ButtonFactory(ABC):
         button = self.button_type(button_data.text, button_data.callback,
                                   button_data.button_function, inline=self.inline, **button_data.native_args)
         return button
-
-

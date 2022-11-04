@@ -7,6 +7,7 @@ class UserBase:
     """
     A store of id mappings to a User object.
     """
+
     def __init__(self, capacity=1000):
         # TODO: make it possible to initialize users storage manually
         self.capacity = capacity

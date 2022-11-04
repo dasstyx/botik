@@ -5,6 +5,7 @@ class SendMessage(ABC):
     """
     API wrapper for sending messages.
     """
+
     def __init__(self, bot):
         self.bot = bot
 
@@ -13,4 +14,3 @@ class SendMessage(ABC):
 
     async def send_with_keyboard(self, user, text, keyboard):
         pass
-

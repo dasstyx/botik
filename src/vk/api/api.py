@@ -1,5 +1,4 @@
 from src.core.api.api import Api
-from src.core.api.api_type import ApiType
 from src.vk.api.api_type import VkApiType
 from src.vk.api.send_message import VkSendMessage
 
