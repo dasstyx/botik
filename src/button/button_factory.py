@@ -12,7 +12,7 @@ class ButtonFactory(ABC):
 
     def create(self, button_data: ButtonData):
         button = self.button_type(button_data.text, button_data.callback,
-                                  self.inline, button_data.button_function, button_data.native_args)
+                                  button_data.button_function, inline=self.inline, **button_data.native_args)
         return button
 
 

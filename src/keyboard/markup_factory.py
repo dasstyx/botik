@@ -9,7 +9,7 @@ class KeyboardMarkupFactory(ABC):
         self.button_factory = button_factory
 
     @abstractmethod
-    def create(self, inline, one_time, **native_args):
+    def create(self, **native_args):
         """
         :param native_args: Any arguments to pass to the backbone API keyboard markup's constructor.
         """
@@ -17,10 +17,10 @@ class KeyboardMarkupFactory(ABC):
 
 
 class TgKeyboardMarkupFactory(KeyboardMarkupFactory):
-    def create(self, inline, one_time, **native_args):
-        return TgKeyboardMarkup(self.button_factory, inline, one_time, native_args)
+    def create(self, **native_args):
+        return TgKeyboardMarkup(self.button_factory, native_args)
 
 
 class VkKeyboardMarkupFactory(KeyboardMarkupFactory):
-    def create(self, inline, one_time, **native_args):
-        return VkKeyboardMarkup(self.button_factory, inline, one_time, native_args)
+    def create(self, **native_args):
+        return VkKeyboardMarkup(self.button_factory, native_args)

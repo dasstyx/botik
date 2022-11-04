@@ -7,10 +7,11 @@ from src.button.button_factory import ButtonFactory
 
 class KeyboardMarkup(ABC):
 
-    def __init__(self, button_factory: ButtonFactory, inline, one_time, native_args):
+    def __init__(self, button_factory: ButtonFactory, native_args):
         self.native_args = native_args
-        self.inline = inline
-        self.one_time = one_time
+        self.inline = self.native_args.pop('inline', None)
+        self.one_time = self.native_args.pop('one_time', None)
+
         self.button_factory = button_factory
         self.hash_to_buttons = {}
         self._markup = None
@@ -40,3 +41,5 @@ class KeyboardMarkup(ABC):
             return self.hash_to_buttons[button_hash]
         else:
             return None
+
+

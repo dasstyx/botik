@@ -8,14 +8,10 @@ from src.button.button_function import ButtonFunction
 
 class Button(ABC):
     # TODO: button_function is a bad name! Change it later!
-    def __init__(self, text, callback, inline=False, button_function: ButtonFunction = ButtonFunction.default,
-                 native_args=None):
-        if native_args is not None:
-            self.native_args = native_args
-        else:
-            self.native_args = {}
-
-        self.inline = inline
+    def __init__(self, text, callback, button_function: ButtonFunction = ButtonFunction.default,
+                 **native_args):
+        self.native_args = native_args
+        self.inline = self.native_args.pop('inline', None)
         self.button_function = button_function
         self.callback = callback
         self.text = text
@@ -43,11 +39,11 @@ class TgButton(Button):
 
         if self.inline:
             self.native_data = types.InlineKeyboardButton(text, callback_data=self.get_text(),
-                                                             request_contact=req_phone, request_location=req_location,
-                                                             **self.native_args)
+                                                          request_contact=req_phone, request_location=req_location,
+                                                          **self.native_args)
         else:
             self.native_data = types.KeyboardButton(text, request_contact=req_phone, request_location=req_location,
-                                                       **self.native_args)
+                                                    **self.native_args)
 
 
 class VkButton(Button):
@@ -57,4 +53,3 @@ class VkButton(Button):
         data = {"action": Text(text)}
         data.update(self.native_args)
         self.native_data = data
-

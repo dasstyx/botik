@@ -39,7 +39,7 @@ class Page(ABC):
         """
         Construct the new self.markup object.
         """
-        self.markup = markup_factory.create(self._data.inline, self._data.one_time)
+        self.markup = markup_factory.create(inline=self._data.inline, one_time=self._data.one_time)
 
     async def send(self, user, message, markup=False):
         """
