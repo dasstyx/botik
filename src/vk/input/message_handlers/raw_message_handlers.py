@@ -28,5 +28,5 @@ class RawMessageHandlers(RawMessageHandlers):
         user = await self._get_user_from_message(message)
         location = message.geo
 
-        await user.storage.add_entry("location", location)
+        await user.storage.set("location", location)
         await self.events.geo_share(user, location)

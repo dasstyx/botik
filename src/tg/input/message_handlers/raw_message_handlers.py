@@ -28,7 +28,7 @@ class RawMessageHandlers(RawMessageHandlers):
         user = await self._get_user_from_message(message)
         location = message.location
 
-        await user.storage.add_entry("location", location)
+        await user.storage.set("location", location)
         await self.events.geo_share(user, location)
 
     async def phone_reply(self, message):
@@ -36,5 +36,5 @@ class RawMessageHandlers(RawMessageHandlers):
         number = message.contact.phone_number
         logging.debug(f"Got a number! {number}")
 
-        await user.storage.add_entry("phone", number)
+        await user.storage.set("phone", number)
         await self.events.contact_share(user, number)

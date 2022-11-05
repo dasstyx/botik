@@ -1,9 +1,9 @@
 class Storage:
     def __init__(self):
-        self.storage = {}
+        self._storage = {}
 
-    async def add_entry(self, key, value):
-        self.storage[key] = value
+    async def set(self, key, value):
+        self._storage[key] = value
 
-    async def get_entry(self, key):
-        return self.storage[key]
+    async def get(self, key):
+        return self._storage[key]
