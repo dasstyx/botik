@@ -19,6 +19,7 @@ token = os.getenv('tg_token')
 bot = AsyncTeleBot(token)
 
 app = TgApp(bot)
+app.templates.button.add_default_navigation('Back', 'Home')
 
 main_data.inline = False
 info_data.inline = True

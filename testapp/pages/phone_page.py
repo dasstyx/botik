@@ -16,8 +16,7 @@ class PhonePage(InputPage):
         return re.match(r"^(\+\d{1,3}[- ]?)?\d{10}$", text)
 
     async def make_page_content(self, user):
-        from src.core.input.keyboard.button.button_data import ButtonData
-        back_button = ButtonData("Back", ButtonCallback(self.nav.get_back))
+        back_button = self.templates.button.Back
         self.markup.add_row([back_button])
 
         await self.send(user, "Введите телефон", markup=True)

@@ -1,6 +1,7 @@
 import asyncio
 
 from src.core.app import App
+from src.core.input.keyboard.button.button_templates import PageTemplates
 from src.core.input.user_input import UserInput
 from src.core.navigation.navigation import Navigation
 from src.core.page.page_factory import PageFactory
@@ -22,8 +23,9 @@ class TgApp(App):
     def initialize(self, bot):
         api = TgApi(bot)
         self.navigator = Navigation()
+        self.templates = PageTemplates(self.navigator)
 
-        self._page_fac: PageFactory = TgPageFactory(api, self.navigator, self.events)
+        self._page_fac: PageFactory = TgPageFactory(api, self.navigator, self.templates, self.events)
         self.navigator.init_page_factory(self._page_fac)
 
         self.user_input = UserInput(self.navigator, self.users)

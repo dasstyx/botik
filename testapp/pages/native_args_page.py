@@ -24,7 +24,7 @@ class NativeArgsPage(Page):
 
         stub_page = ButtonData("Stub 1", ButtonCallback(self.nav.change_page, path='/stub1'))
 
-        back_button = ButtonData("Back", ButtonCallback(self.nav.get_back))
+        back_button = self.templates.button.Back
         self.markup.add_row([info_button, stub_page])
         self.markup.add_row([back_button])
         await self.send(user, 'This is native args page...', markup=True)

@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 
 from src.core.api.api import Api
+from src.core.input.keyboard.button.button_templates import PageTemplates
 from src.core.input.keyboard.keyboard_markup import KeyboardMarkup
 from src.core.input.keyboard.markup_factory import KeyboardMarkupFactory
 from src.core.input.message_handlers.events.bot_events import BotEvents
@@ -8,8 +9,10 @@ from src.core.input.message_handlers.events.bot_events import BotEvents
 
 class Page(ABC):
 
-    def __init__(self, path: str, api: Api, navigator, bot_events: BotEvents, markup_factory: KeyboardMarkupFactory,
+    def __init__(self, path: str, api: Api, navigator, templates: PageTemplates, bot_events: BotEvents,
+                 markup_factory: KeyboardMarkupFactory,
                  data):
+        self.templates = templates
         self.bot_events = bot_events
         self.nav = navigator
         self.api = api

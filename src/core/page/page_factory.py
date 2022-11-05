@@ -5,7 +5,8 @@ from src.core.page.page_data import PageData
 
 class PageFactory(ABC):
 
-    def __init__(self, api, navigator, bot_events):
+    def __init__(self, api, navigator, templates, bot_events):
+        self.templates = templates
         self.bot_events = bot_events
         self.navigator = navigator
         self.api = api
@@ -16,4 +17,5 @@ class PageFactory(ABC):
 
     def create(self, data: PageData):
         self._make_dependencies(data)
-        return data.page_type(data.path, self.api, self.navigator, self.bot_events, self.markup_factory, data)
+        return data.page_type(data.path, self.api, self.navigator, self.templates, self.bot_events, self.markup_factory,
+                              data)

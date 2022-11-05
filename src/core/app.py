@@ -14,6 +14,7 @@ class App(ABC):
         self.bot = bot
         self._page_fac: PageFactory = None
         self.navigator = None
+        self.templates = None
         self.user_input = None
         self.users = UserBase()
         self.events = BotEvents()
