@@ -1,7 +1,7 @@
 import asyncio
 
 from src.core.app import App
-from src.core.input.keyboard.button.button_templates import PageTemplates
+from src.core.templates.page_templates import PageTemplates
 from src.core.input.user_input import UserInput
 from src.core.navigation.navigation import Navigation
 from src.core.page.page_factory import PageFactory

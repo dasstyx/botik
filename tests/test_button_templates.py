@@ -1,7 +1,7 @@
 from unittest import TestCase
 
 from src.core.input.keyboard.button.button_data import ButtonData
-from src.core.input.keyboard.button.button_templates import ButtonTemplates
+from src.core.templates.button_templates import ButtonTemplates
 from src.core.navigation.navigation import Navigation
 
 

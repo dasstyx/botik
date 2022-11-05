@@ -1,11 +1,4 @@
-from abc import ABC
-
 from src.core.input.keyboard.button.button_data import ButtonData, ButtonCallback
-
-
-class PageTemplates:
-    def __init__(self, navigation):
-        self.button = ButtonTemplates(navigation)
 
 
 class ButtonTemplates:

@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 from src.core.api.api import Api
-from src.core.input.keyboard.button.button_templates import PageTemplates
+from src.core.templates.page_templates import PageTemplates
 from src.core.input.keyboard.keyboard_markup import KeyboardMarkup
 from src.core.input.keyboard.markup_factory import KeyboardMarkupFactory
 from src.core.input.message_handlers.events.bot_events import BotEvents
