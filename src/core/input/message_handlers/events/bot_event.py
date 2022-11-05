@@ -6,7 +6,7 @@ from src.core.user.user import User
 
 
 class BotEvent(ABC):
-    def __init__(self) -> None:
+    def __init__(self):
         self.subscribers = set()
 
     def subscribe(self, func: Callable[[User, Any], Any]):
