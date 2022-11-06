@@ -11,7 +11,6 @@ class TestButtonTemplates(TestCase):
         templates = self.new_templates()
         self.set_button_data(templates, 'Test1')
         self.set_button_data(templates, 'Test2')
-        templates.save()
 
         self.assertEqual(templates.Test1.text, 'Test1')
         self.assertEqual(templates.Test2.text, 'Test2')
@@ -20,7 +19,6 @@ class TestButtonTemplates(TestCase):
         templates = self.new_templates()
         templates.add_default_navigation('Back', 'Home')
         self.set_button_data(templates, 'Test1')
-        templates.save()
 
         self.assertEqual(templates.Back.text, 'Back')
         self.assertEqual(templates.Home.text, 'Home')
