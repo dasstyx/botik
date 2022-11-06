@@ -24,6 +24,7 @@ class TestButtonTemplates(TestCase):
 
         self.assertEqual(templates.Back.text, 'Back')
         self.assertEqual(templates.Home.text, 'Home')
+        self.assertEqual(templates.Test1.text, 'Test1')
 
     def new_templates(self):
         nav = Navigation()
