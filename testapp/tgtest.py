@@ -22,8 +22,7 @@ app = TgApp(bot)
 app.templates.button.add_default_navigation('Back', 'Home')
 
 main_data.inline = False
-info_data.inline = True
-pages = [main_data, info_data, nargs_data, stub1_data, stub2_data]
+pages = [main_data, nargs_data, stub1_data, stub2_data]
 
 for page in pages:
     app.add_page(page)

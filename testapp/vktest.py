@@ -23,7 +23,7 @@ bot_api = API(token)
 app = VkApp(bot, bot_api)
 app.templates.button.add_default_navigation('Back', 'Home')
 
-pages = [main_data, info_data, phone_data, nargs_data, stub1_data, stub2_data]
+pages = [main_data, phone_data, nargs_data, stub1_data, stub2_data]
 for page in pages:
     app.add_page(page)
 

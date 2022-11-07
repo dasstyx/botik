@@ -17,14 +17,15 @@ class NativeArgsPage(Page):
 
     async def make_page_content(self, user):
         if self.api.api_type == VkApiType:
-            info_button = ButtonData("Primary", ButtonCallback(self.nav.change_page, path='~/info'),
-                                     color=KeyboardButtonColor.PRIMARY)
+            positive_button = ButtonData("Positive", ButtonCallback(self.send, message=f"Positive"),
+                                         color=KeyboardButtonColor.POSITIVE)
+            primary_button = ButtonData("Primary", ButtonCallback(self.send, message=f"Primary"),
+                                        color=KeyboardButtonColor.PRIMARY)
         else:
-            info_button = ButtonData("Primary", ButtonCallback(self.nav.change_page, path='~/info'))
-
-        stub_page = ButtonData("Stub 1", ButtonCallback(self.nav.change_page, path='/stub1'))
+            positive_button = ButtonData("Positive", ButtonCallback(self.send, message=f"Positive"))
+            primary_button = ButtonData("Primary", ButtonCallback(self.send, message=f"Primary"))
 
         back_button = self.templates.button.Back
-        self.markup.add_row([info_button, stub_page])
+        self.markup.add_row([positive_button, primary_button])
         self.markup.add_row([back_button])
         await self.send(user, 'This is native args page...', markup=True)
